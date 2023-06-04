@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculadora de IVA - Cálculo rápido y fácil</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Calcula el IVA de tus compras con esta sencilla y eficiente calculadora en línea">
+    <meta name="keywords" content="calculadora, IVA, cálculo, compras">
+    <script src="calculadora.js"></script>
+    <link rel="stylesheet" type="text/css" href="estilos.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/calcular-iva.JPG">
+  </head>
+  <body>
+    <h1>Calculadora de IVA en ARS</h1>
+  <form>
+    <label>Ingrese el precio sin IVA:</label>
+    <input type="text" name="price">
+    <input type="submit" value="Calcular">
+  </form>
+  <p id="result"></p>
+
+  <!-- HTML -->
+<div>
+  <label for="income">Ingreso anual:</label>
+  <input type="number" id="income">
+  <button onclick="calcularISR()">Calcular ISR</button>
+  <p>ISR: <span id="isr"></span></p>
+</div>
+
+<div>
+  <label for="price">Precio:</label>
+  <input type="number" id="price">
+  <button onclick="calcularISC()">Calcular ISC</button>
+  <p>ISC: <span id="isc"></span></p>
+</div>
+
+  <script>
+    const form = document.querySelector("form");
+    const result = document.querySelector("#result");
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      const price = form.elements.price.value;
+      const iva = price * 0.21;
+      const total = parseFloat(price) + iva;
+      result.innerHTML = `El IVA es de ${iva.toFixed(2)} ARS y el precio con IVA es de ${total.toFixed(2)} ARS`;
+    });
+    // JavaScript
+function calcularISR() {
+  const income = document.getElementById("income").value;
+  const isr = income * 0.10; // Suponiendo una tasa de ISR del 10%
+  document.getElementById("isr").textContent = isr.toFixed(2); // Mostrar el resultado con dos decimales
+}
+
+function calcularISC() {
+  const price = document.getElementById("price").value;
+  const isc = price * 0.05; // Suponiendo una tasa de ISC del 5%
+  document.getElementById("isc").textContent = isc.toFixed(2); // Mostrar el resultado con dos decimales
+}
+
+  </script>
+      <a href="privacidad.html">Política de privacidad</a>
+    </p>
+  </body>
+</html>
